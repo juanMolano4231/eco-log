@@ -20,7 +20,7 @@ fun DashboardScreen() {
     val context = LocalContext.current
     val dataStoreManager = remember { DataStoreManager(context) }
     val activities by dataStoreManager.activitiesFlow.collectAsState(initial = emptyList())
-    val scope = rememberCoroutineScope() // ✅ here
+    val scope = rememberCoroutineScope()
 
     Scaffold(
         topBar = {
@@ -46,7 +46,7 @@ fun DashboardScreen() {
                     activity = activity,
                     onDelete = {
                         scope.launch {
-                            dataStoreManager.deleteActivity(activity)
+                                dataStoreManager.deleteActivity(activity)
                         }
                     }
                 )
